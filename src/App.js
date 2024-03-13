@@ -1,17 +1,17 @@
 import "./App.css";
 import User from "./users/Index";
-import PGManagement from "./pgmanagement/Index";
+import HotelManagement from "./hotelManagement/Index.js";
 import Admin from "./admin/Index";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import userReducer from "./users/userProvider/action";
-import pgmanagementReducer from "./pgmanagement/pgmanagementProvider/action";
+import pgmanagementReducer from "./hotelManagement/reduxStateProvider/action";
 import adminReducer from "./admin/adminProvider/action";
 import { ThemeProvider } from "@mui/material";
 import theme from "./Theme.js";
 import { grey } from "@mui/material/colors";
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_hotelManagementCOMPOSE__ || compose;
 const userStore = createStore(userReducer, composeEnhancers(compose(applyMiddleware(thunk))));
 const pgmanagementStore = createStore(
 	pgmanagementReducer,
@@ -47,7 +47,7 @@ const App = (props) => {
 		return (
 			<ThemeProvider theme={theme.pgmanagement}>
 				<Provider store={pgmanagementStore}>
-					<PGManagement />
+					<HotelManagement />
 				</Provider>
 			</ThemeProvider>
 		);
